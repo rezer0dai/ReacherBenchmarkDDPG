@@ -1,0 +1,3 @@
+[submodule "PrioritizedExperienceReplay"]
+	path = PrioritizedExperienceReplay
+	url = https://github.com/rezer0dai/PrioritizedExperienceReplay
