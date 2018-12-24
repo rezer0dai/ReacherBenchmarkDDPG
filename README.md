@@ -1,18 +1,19 @@
-all informations are provided in .ipynb
-- for actor i used NoisyNetworks for exploration
-- i used batchnorm
-- used DDPG
-- well there are many improvements ~ see wheeler framework for example ( lot of different features and things to tune ~ GAE, RNN/CNN, globalnormalizer, network sizes, neural network architecture, RUDDER approah, etc etc)
-
-- How to run the code : run Report.ipynb
-
-- details : 
-- for actor i used NoisyNetworks for exploration
-- i used batchnorm
-- network sizes 400 + 300, critic is reused from DDPG algorithm, learning rates actor i get bigger 1e-3 than critic 1e-4
-- updating network every 40x20 steps and repeat learning 20x20 times, postponed update for 7 learnings
-- used 3-step estimator, and Advantage as TD-learning, batch size 256, and buffer size 1e6, rerandomizing noisy nets for explooration every 3rd step
-- one actor one critic ( shared for every arm )
-- used Prioritized Experience Replay
-
-weights to trained network : https://github.com/rezer0dai/UnityMLEnvs/tree/master/models/reacher/benchmark
+Project Details
+- state_size=33, action_size=4 as default UnityML - Reacher environment provides
+- 20 arms environment, used shared actor + critic for controlling all arms
+- Policy Gradients used, namely DDPG algorithm
+- environment is considered as Udacity asks ~ mean of last 100 episodes during training > 30.
+  - however this can be far off, as we train TARGET network. Aka i dont think it is reasonable measuring
+  - especially when it comes to model itself change every x-timestamps, therefore question is : What we evaluating robustness of model to changes, or his capability to solve given task ? Appareantelly by rubric it is former case
+  - Solution ? in this environment i skipped it and comply with rubric, however you can see my solution for Tennis, where i demonstrated that Former case of evaluation is really off, and difference between *evaluating* TARGET vs LOCAL network
+- number of episodes to solve ? based on rubric it is 0, based on real ep executed about 90, based on real capability of target ~ i did not meassure should be 0in between 0~90
+- How to install :
+  - install anaconda : https://www.anaconda.com/download/
+  - then follow : 
+  ```
+  conda install -y pytorch -c pytorch
+  pip install unityagents
+  ```
+  - then replicate my results by running Report.ipynb
+  - and you can download my pretrained weights : https://github.com/rezer0dai/UnityMLEnvs/tree/master/models/reacher/benchmark
+- if anything more needed in Readme please specify in more detail
