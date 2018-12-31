@@ -14,5 +14,5 @@ Project Details
   pip install unityagents
   pip install matplotlib
   ```
-  - then replicate my results by running Report.ipynb
+  - then replicate my results by running DDPG.ipynb
   - and you can download my pretrained weights : https://github.com/rezer0dai/UnityMLEnvs/tree/master/models/reacher/benchmark
